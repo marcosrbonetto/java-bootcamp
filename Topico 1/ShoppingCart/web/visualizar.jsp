@@ -1,4 +1,8 @@
-
+<%-- 
+    Document   : creditCard
+    Created on : 16/01/2015, 02:57:57
+    Author     : Marcos
+--%>
 <%@page import="Clases.ItemColection"%>
 <%@page import="Clases.Item"%>
 

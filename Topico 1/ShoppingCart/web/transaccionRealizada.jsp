@@ -1,7 +1,7 @@
 <%-- 
     Document   : transaccionRealizada
     Created on : 16/01/2015, 03:01:09
-    Author     : Tomas
+    Author     : Marcos
 --%>
 
 <%@page import="Clases.Mail"%>

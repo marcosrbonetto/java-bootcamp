@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Joze
+ * @author Marcos
  */
 @WebServlet(name="Cargar", urlPatterns={"/Cargar"})
 public class Cargar extends HttpServlet {

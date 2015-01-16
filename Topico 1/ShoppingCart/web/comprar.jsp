@@ -1,7 +1,7 @@
 <%-- 
     Document   : comprar
     Created on : 16/01/2015, 02:45:02
-    Author     : Tomas
+    Author     : Marcos
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

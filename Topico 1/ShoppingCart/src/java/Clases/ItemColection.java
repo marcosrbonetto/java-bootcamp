@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Tomas
+ * @author Marcos
  */
 public class ItemColection
 {

@@ -9,7 +9,7 @@ import java.util.Locale;
 
 /**
  *
- * @author Tomas
+ * @author Marcos
  */
 public class Item
 {
