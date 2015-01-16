@@ -7,6 +7,8 @@ package Servlet;
 
 import Clases.ItemColection;
 import Clases.Item;
+import Clases.Mail;
+import Clases.ItemSingleton;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -24,20 +26,10 @@ import javax.swing.JOptionPane;
  */
 @WebServlet(name="Cargar", urlPatterns={"/Cargar"})
 public class Cargar extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    
-    //Instancia del carrito - Singleton
+  
     ItemColection coleccion = new ItemColection();
     
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try 
@@ -93,9 +85,18 @@ public class Cargar extends HttpServlet {
             }
             else
             {
+                if( request.getSession().getAttribute("varColeccion")=="")
+                {
+                    coleccion=new ItemColection();
+                }
                 float pr=Float.parseFloat(price);
-                Item nueva= new Item(name,category,description,pr);
+                int id=ItemSingleton.getNextItemId();
+                Item nueva= new Item(id,name,category,description,pr);
                 coleccion.addItem(nueva);
+                
+                //SEND A E-Mail
+            //Mail mail=new Mail();
+            //mail.sendEmail(id, "New Item", "Item n:"+id+" Added !");
                 
                 //la sesion adquirira una variable llamada varColeccion de tipo coleccionProducts(ArrayList)
                 session.setAttribute("varColeccion", coleccion);

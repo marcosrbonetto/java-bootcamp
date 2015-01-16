@@ -28,7 +28,7 @@
             }
             auxiliar="<td>New mount</td></tr>";
             auxiliar+="<tr><td>"+ monto +"</td></tr>";
-           
+           coleccion=null;
         }
         return auxiliar;
     }

@@ -27,7 +27,7 @@
                 <tbody>
                     <tr>
                         <td>Name: </td>
-                        <td><input type="text" name="name" value="" /></td>
+                        <td><input type="text" name="name" value="a" /></td>
                     </tr>
                     <tr>
                         <td>Category:</td>
@@ -40,11 +40,11 @@
                     </tr>
                     <tr>
                         <td>Description: </td>
-                        <td><input type="text" name="description" value="" /></td>
+                        <td><input type="text" name="description" value="a" /></td>
                     </tr>
                     <tr>
                         <td>Price:</td>
-                        <td><input type="text" name="price" value="" /></td>
+                        <td><input type="text" name="price" value="100" /></td>
                     </tr>
                     <tr>
                         <td><input type="submit" value="Guardar" name="guardar" /></td>

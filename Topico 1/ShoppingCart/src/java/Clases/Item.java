@@ -13,15 +13,15 @@ import java.util.Locale;
  */
 public class Item
 {
-    private static int codigo=0;
+    private int codigo;
     private String description;
     private String name;
     private float price;
     private String category;
 
-    public Item(String name, String category, String description, float price)
+    public Item(int id,String name, String category, String description, float price)
     {
-        codigo++;
+        this.codigo=id;
         this.description = description;
         this.name = name;
         this.price = price;
@@ -37,12 +37,12 @@ public class Item
     }
 
 /*Codigo*/
-    public static int getCodigo() {
+    public  int getCodigo() {
         return codigo;
     }
 
-    public static void setCodigo(int codigo) {
-        Item.codigo = codigo;
+    public  void setCodigo(int codigo) {
+        codigo = codigo;
     }
     
 /*Descripcion*/

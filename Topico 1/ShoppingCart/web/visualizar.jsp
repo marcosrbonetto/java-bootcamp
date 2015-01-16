@@ -10,21 +10,24 @@
     {
         //tomo la variable varColeccion de la sesion y la casteo a ArrayList
         ItemColection coleccion= (ItemColection) request.getSession().getAttribute("varColeccion");
-        float monto = coleccion.getMonto();
+       
         
         String auxiliar="No hay observaciones cargadas";
         if(coleccion!=null)
-
         {
-            auxiliar="<tr><td>Codigo</td><td>Description</td><td>Product</td><td>Price</td><td>Category</td><td>Monto</td></tr>";
-            
+            float monto = coleccion.getMonto();
+            auxiliar="<table border='1'><tr><td>Codigo</td><td>Producto</td><td>Description</td><td>Type</td><td>Price</td><td>Monto Acomulado</td></tr>";
+            float ac=0.0f;
             //recorro el carrito
             for(int i=0; i< coleccion.tamañoColeccion(); i++)
-
-            {
+            { 
+                
                 Item item = (Item)coleccion.coleccion().get(i);
-                auxiliar+="<tr><td>"+ item.getCodigo() +"</td><td>"+ item.getDescription() +"</td><td>"+ item.getName() +"</td><td>"+ item.getPrice()+"</td><td>"+ item.getCategory()+"</td><td>"+ monto+"</td></tr>";
+                ac+=item.getPrice();
+                auxiliar+="<tr><td>"+ item.getCodigo() +"</td><td>"+ item.getName() +"</td><td>"+ item.getDescription() +"</td><td>"+ item.getCategory()+"</td><td>"+ item.getPrice()+"</td><td>"+ac+"</td></tr>";
             }
+            auxiliar+="<tr><td>TOTAL</td><td></td><td></td><td></td><td></td><td>"+monto+"</td></tr></table><a href='comprar.jsp' </a><b>End purchase and pay</b>";
+            coleccion=null;
         }
         return auxiliar;
     }
@@ -33,15 +36,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Shopping Cart</title>
     </head>
     <body>
-        <h1>Loaded Products</h1>
-        <table border="1">
+        <h1>Cart Items</h1>
+        
         <%=tabla(request)%>
-        </table>
-
-        <a href="comprar.jsp" </a><b>Buy</b>
-
+        
     </body>
 </html>

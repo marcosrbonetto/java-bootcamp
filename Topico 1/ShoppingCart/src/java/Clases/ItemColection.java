@@ -13,13 +13,21 @@ import java.util.ArrayList;
  */
 public class ItemColection
 {
+    private int idTransaccion;
     private ArrayList<Item> coleccion;
     
     
     public ItemColection()
     {
         coleccion = new ArrayList<Item>();
+        this.idTransaccion=TransactionSingleton.getNextTransactionId();
     }
+
+    public int getIdTransaccion() {
+        return idTransaccion;
+    }
+    
+    
 
     public void addItem(Item a)
     {

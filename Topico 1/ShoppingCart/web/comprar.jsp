@@ -12,8 +12,14 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <h1>
         <a href="creditCard.jsp" </a><b>CreditCard</b>
+        </h1>
+        <h1>
         <a href="paypal.jsp" </a><b>Paypal</b>
+        </h1>
+        <h1>
         <a href="cash.jsp" </a><b>Cash</b>
+        </h1>
     </body>
 </html>
