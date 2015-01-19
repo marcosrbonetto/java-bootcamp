@@ -35,6 +35,10 @@ class NumberWordConverter implements IStrategyConverter
                     break;
             case 9:word=getMillon(num);
                     break;
+            case 10:word=getDecenaMillon(num);
+                    break;
+            case 11:word=getCentenaMillon(num);
+                    break;
             default: System.out.println("Error");
                 
         }
@@ -227,6 +231,53 @@ class NumberWordConverter implements IStrategyConverter
             
             String a=getUnidad(x.charAt(0));
             String c=getCentenaMiles(sb.toString());
+            if(c.equals("zero")){c="";}
+            word= a+" Million "+c;  
+        
+    return word;}
+      
+      public String getDecenaMillon(String x)
+    {String word="";
+    System.out.println("Entra a DecenaMillon:" +x);
+    
+            StringBuilder sb=new StringBuilder();
+            sb.append(x.charAt(0));
+            sb.append(x.charAt(1));
+            StringBuilder sb2=new StringBuilder();
+            sb2.append(x.charAt(3));
+            sb2.append(x.charAt(4));
+            sb2.append(x.charAt(5));
+            sb2.append('.');
+            sb2.append(x.charAt(7));
+            sb2.append(x.charAt(8));
+            sb2.append(x.charAt(9));
+            
+            String a=getDecena(sb.toString());
+            String c=getCentenaMiles(sb2.toString());
+            if(c.equals("zero")){c="";}
+            word= a+" Million "+c;  
+        
+    return word;}
+      
+      public String getCentenaMillon(String x)
+    {String word="";
+    System.out.println("Entra a DecenaMillon:" +x);
+    
+            StringBuilder sb=new StringBuilder();
+            sb.append(x.charAt(0));
+            sb.append(x.charAt(1));
+            sb.append(x.charAt(2));
+            StringBuilder sb2=new StringBuilder();
+            sb2.append(x.charAt(4));
+            sb2.append(x.charAt(5));
+            sb2.append(x.charAt(6));
+            sb2.append('.');
+            sb2.append(x.charAt(8));
+            sb2.append(x.charAt(9));
+            sb2.append(x.charAt(10));
+            
+            String a=getCentena(sb.toString());
+            String c=getCentenaMiles(sb2.toString());
             if(c.equals("zero")){c="";}
             word= a+" Million "+c;  
         
