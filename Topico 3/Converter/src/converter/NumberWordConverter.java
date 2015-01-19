@@ -18,22 +18,24 @@ class NumberWordConverter implements IStrategyConverter
     public String convertToWord(String num) 
     { String word="";
         int tam=num.length();
-        
-        ArrayList<Character> v=new ArrayList<Character>();
-        for(int i=0;i<num.length();i++)
-        {
-            v.add(i, num.charAt(i));
-        }
+        System.out.println("Numero: "+num);
         switch(tam)
         {
-            case 1:word=getUnidad(v.get(0));
+            case 1:word=getUnidad(num.charAt(0));
                     break;
-            case 2:word=getDecena(v);
+            case 2:word=getDecena(num);
                     break;
-            case 3:word=getCentena(v);
+            case 3:word=getCentena(num);
                     break;
-            case 4:word=getMiles(v);
+            case 5:word=getMiles(num);
                     break;
+            case 6:word=getDecenaMiles(num);
+                    break;
+            case 7:word=getCentenaMiles(num);
+                    break;
+            case 9:word=getMillon(num);
+                    break;
+            default: System.out.println("Error");
                 
         }
         return word;
@@ -47,7 +49,7 @@ class NumberWordConverter implements IStrategyConverter
     
     public String getUnidad(char n)
     {String word="";
-    
+    System.out.println("Entra a Unidad:" +n);
     if(n=='1'){word= "one";}
     else if(n=='2'){word= "two";}
     else if(n=='3'){word= "three";}
@@ -61,91 +63,172 @@ class NumberWordConverter implements IStrategyConverter
     return word;
     }
     
-    public String getDecena(ArrayList<Character> x)
+    public String getDecena(String x)
     {
         String word="";
-       
-        if(x.get(0)=='1')
+        System.out.println("Entra a Decena:" +x);
+        if(x.charAt(0)=='1')
         {
-            
-            System.out.println("xx: "+x.get(1));
-            if(x.get(1)=='1'){word="eleven";}
-            else if(x.get(1)=='2'){word= "twelve";}
-            else if(x.get(1)=='3'){word= "thirteen";}
-            else if(x.get(1)=='4'){word= "fourteen";}
-            else if(x.get(1)=='5'){word= "fifteen";}
-            else if(x.get(1)=='6'){word= "sixteen";}
-            else if(x.get(1)=='7'){word= "seventeen";}
-            else if(x.get(1)=='8'){word= "eighteen";}
-            else if(x.get(1)=='9'){word= "nineteen";}
-            else if(x.get(1)=='0'){word= "ten";}
+            if(x.charAt(1)=='1'){word="eleven";}
+            else if(x.charAt(1)=='2'){word= "twelve";}
+            else if(x.charAt(1)=='3'){word= "thirteen";}
+            else if(x.charAt(1)=='4'){word= "fourteen";}
+            else if(x.charAt(1)=='5'){word= "fifteen";}
+            else if(x.charAt(1)=='6'){word= "sixteen";}
+            else if(x.charAt(1)=='7'){word= "seventeen";}
+            else if(x.charAt(1)=='8'){word= "eighteen";}
+            else if(x.charAt(1)=='9'){word= "nineteen";}
+            else if(x.charAt(1)=='0'){word= "ten";}
         }
-        else if(x.get(0)=='2'){
-            String z=getUnidad(x.get(1));
-            if(z.equals("zero")){z="";}
-            word= "twenty "+z;
+        else if(x.charAt(0)=='2'){
+            String z=getUnidad(x.charAt(1));
+            if(z.equals("zero")){word= "twenty";}
+            word= "twenty-"+z;
         }
-        else if(x.get(0)=='3'){
-            String z=getUnidad(x.get(1));
-            if(z.equals("zero")){z="";}
-            word= "thirty "+z;
+        else if(x.charAt(0)=='3'){
+            String z=getUnidad(x.charAt(1));
+            if(z.equals("zero"))
+            {word= "thirty";}
+            else
+            {word= "thirty-"+z;}
         }
-        else if(x.get(0)=='4'){
-            String z=getUnidad(x.get(1));
-            if(z.equals("zero")){z="";}
-            word= "forty "+z;
+        else if(x.charAt(0)=='4'){
+            String z=getUnidad(x.charAt(1));
+            if(z.equals("zero")){word= "forty";}
+            else
+            {word= "forty-"+z;}
         }
-        else if(x.get(0)=='5'){
-           String z=getUnidad(x.get(1));
-            if(z.equals("zero")){z="";}
-            word= "fifty "+z;
+        else if(x.charAt(0)=='5'){
+           String z=getUnidad(x.charAt(1));
+            if(z.equals("zero")){word= "fifty";}
+            else
+            {word= "fifty-"+z;}
         }
-        else if(x.get(0)=='6'){
-            String z=getUnidad(x.get(1));
-            if(z.equals("zero")){z="";}
-            word= "sixty "+z;
+        else if(x.charAt(0)=='6'){
+            String z=getUnidad(x.charAt(1));
+            if(z.equals("zero")){word= "sixty";}
+            else
+            {word= "sixty-"+z;}
         }
-        else if(x.get(0)=='7'){
-            String z=getUnidad(x.get(1));
-            if(z.equals("zero")){z="";}
-            word= "seventy "+z;
+        else if(x.charAt(0)=='7'){
+            String z=getUnidad(x.charAt(1));
+            if(z.equals("zero")){word= "seventy";}
+            else
+            {word= "seventy-"+z;}
         }
-        else if(x.get(0)=='8'){
-           String z=getUnidad(x.get(1));
-            if(z.equals("zero")){z="";}
-            word= "eighty "+z;
+        else if(x.charAt(0)=='8'){
+           String z=getUnidad(x.charAt(1));
+            if(z.equals("zero")){word= "eighty";}
+            else
+            {word= "eighty-"+z;}
         }
-        else if(x.get(0)=='9'){
-           String z=getUnidad(x.get(1));
-            if(z.equals("zero")){z="";}
-            word= "ninety "+z;
+        else if(x.charAt(0)=='9'){
+           String z=getUnidad(x.charAt(1));
+            if(z.equals("zero")){word= "ninety";}
+            else
+            { word= "ninety-"+z;}
         }
     
         
         return word;
     }
     
-    public String getCentena(ArrayList<Character> x)
+    public String getCentena(String x)
     {String word="";
-    
-            String a=getUnidad(x.get(0));
-            String c=getDecena(x);
-            if(c.equals("zero")){c="";}
-            word= a+" hundred "+c;  
+        StringBuilder sb=new StringBuilder();
+        sb.append(x.charAt(1));
+        sb.append(x.charAt(2));
+        System.out.println("Entra a Centena:" +x);
+            String a=getUnidad(x.charAt(0));
+            String c=getDecena(sb.toString());
+            if(c.equals("zero"))
+            {
+                word= a+" hundred "; 
+            }
+            else if(a.equals("zero"))
+            {
+                word= c;
+            }
+            else 
+            {
+                word=a+" hundred "+c;
+            }
+             
         
     return word;}
     
-     public String getMiles(ArrayList<Character> x)
+     public String getMiles(String x)
     {String word="";
+    System.out.println("Entra a Miles:" +x);
     
-        System.out.println("x: "+x.get(0));
-        System.out.println("xx: "+x.get(1));
-        System.out.println("xxx: "+x.get(2));
-       
-            String a=getUnidad(x.get(0));
-            String c=getDecena(x);
+            StringBuilder sb=new StringBuilder();
+            sb.append(x.charAt(2));
+            sb.append(x.charAt(3));
+            sb.append(x.charAt(4));
+
+            String a=getUnidad(x.charAt(0));
+            String c=getCentena(sb.toString());
             if(c.equals("zero")){c="";}
-            word= a+" hundred "+c;  
+            word= a+" thousand "+c;  
+        
+    return word;}
+     
+     public String getDecenaMiles(String x)
+    {String word="";
+    System.out.println("Entra a DecenaMiles:" +x);
+    
+            StringBuilder sb=new StringBuilder();
+            sb.append(x.charAt(0));
+            sb.append(x.charAt(1));
+            StringBuilder sb2=new StringBuilder();
+            sb2.append(x.charAt(3));
+            sb2.append(x.charAt(4));
+            sb2.append(x.charAt(5));
+            
+            String a=getDecena(sb.toString());
+            String c=getCentena(sb2.toString());
+            if(c.equals("zero")){c="";}
+            word= a+" thousand "+c;  
+        
+    return word;}
+     
+     public String getCentenaMiles(String x)
+    {String word="";
+    System.out.println("Entra a CentenaMiles:" +x);
+    
+            StringBuilder sb=new StringBuilder();
+            sb.append(x.charAt(0));
+            sb.append(x.charAt(1));
+            sb.append(x.charAt(2));
+            StringBuilder sb2=new StringBuilder();
+            sb2.append(x.charAt(4));
+            sb2.append(x.charAt(5));
+            sb2.append(x.charAt(6));
+            
+            String a=getCentena(sb.toString());
+            String c=getCentena(sb2.toString());
+            if(c.equals("zero")){c="";}
+            word= a+" thousand "+c;  
+        
+    return word;}
+     
+      public String getMillon(String x)
+    {String word="";
+    System.out.println("Entra a Millon:" +x);
+    
+            StringBuilder sb=new StringBuilder();
+            sb.append(x.charAt(2));
+            sb.append(x.charAt(3));
+            sb.append(x.charAt(4));
+            sb.append('.');
+            sb.append(x.charAt(6));
+            sb.append(x.charAt(7));
+            sb.append(x.charAt(8));
+            
+            String a=getUnidad(x.charAt(0));
+            String c=getCentenaMiles(sb.toString());
+            if(c.equals("zero")){c="";}
+            word= a+" Million "+c;  
         
     return word;}
     
