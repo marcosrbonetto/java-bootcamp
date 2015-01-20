@@ -34,6 +34,8 @@ public class JFConverter extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtNum = new javax.swing.JFormattedTextField();
         txtWord = new javax.swing.JTextField();
+        txtRoma = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -41,22 +43,27 @@ public class JFConverter extends javax.swing.JFrame {
         jLabel1.setText("Number");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, 20));
 
-        btnConvert.setText("<< Convert >>");
+        btnConvert.setText("Convert >>");
         btnConvert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConvertActionPerformed(evt);
             }
         });
-        getContentPane().add(btnConvert, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, 20));
+        getContentPane().add(btnConvert, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 110, 20));
 
         jLabel2.setText("Word");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
 
         txtNum.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        txtNum.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 110, -1));
         getContentPane().add(txtWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 420, -1));
+        getContentPane().add(txtRoma, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 420, -1));
 
-        setSize(new java.awt.Dimension(704, 129));
+        jLabel3.setText("Roman");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
+
+        setSize(new java.awt.Dimension(704, 168));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -68,6 +75,9 @@ public class JFConverter extends javax.swing.JFrame {
         //convert
         NumberWordConverter con=new NumberWordConverter();
         txtWord.setText(con.convertToWord(txtNum.getText()));
+       
+        NumberRomanConverter conn = new NumberRomanConverter();
+        txtRoma.setText(conn.convertToWord(txtNum.getText()));
         txtNum.setText("");
     }
     else if(!txtWord.getText().equals("")) 
@@ -120,7 +130,9 @@ public class JFConverter extends javax.swing.JFrame {
     private javax.swing.JButton btnConvert;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JFormattedTextField txtNum;
+    private javax.swing.JTextField txtRoma;
     private javax.swing.JTextField txtWord;
     // End of variables declaration//GEN-END:variables
 }

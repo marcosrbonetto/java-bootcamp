@@ -39,7 +39,7 @@ class NumberWordConverter implements IStrategyConverter
                     break;
             case 11:word=getCentenaMillon(num);
                     break;
-            default: System.out.println("Error");
+            default: word="The number is too big..";
                 
         }
         return word;
